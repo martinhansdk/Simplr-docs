@@ -1,0 +1,25 @@
+<div id="document_list">
+
+Search: <input type="text" id="search"></input>
+
+<a href="/add">Add new</a>
+
+<div id="taglist">
+<span class="list_heading">Tags: </span>
+{% for tag in tags %}
+<div class="tag_in_list">{{ tag.name }}</div>
+{% endfor %}
+</div>
+</div>
+
+<div id="document_list">
+<span class="list_heading">Matching documents: </span>
+{% if documents %}
+  {% for doc in documents %}
+    <div class="document_list_entry"><a href="/{{ doc.id }}">{{ doc.title }}</a></div>
+  {% endfor %} 
+{% else %}
+  <p>No documents yet.</p>
+{% endif %}
+</div>
+</div>

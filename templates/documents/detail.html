@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %} Docunizer -
+{% if doc %}{{ doc.title }}{% else %}New document{% endif %}
+{% endblock %}
+
+{% block content %}
+<a href="/">Back to document list</a>
+
+<form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+{{ form.non_field_errors }}
+
+{% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+{% if field.label == "Filename" and field.name %}
+    Document: <a href="{{ doc.filename.url }}">View</a>  Change: {{ field }}
+{% else %}
+        {{ field.label_tag }}: {{ field }}
+{% endif %}
+    </div>
+{% endfor %}
+
+<input type="submit" class="k-button" value="Save" />
+<input type="submit" class="k-button" name="cancel" value="Cancel" />
+</form>
+
+<script type="text/javascript">
+    $(function() {
+         $("#id_filename").kendoUpload({
+             async: {saveUrl: "#", removeUrl: "#", autoUpload: false}
+    });
+    });
+{% endblock %}
