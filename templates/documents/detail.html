@@ -7,7 +7,7 @@
 {% block content %}
 <a href="/">Back to document list</a>
 
-<form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+<form action="" enctype="multipart/form-data" method="post" class="ym-form ym-columnar">{% csrf_token %}
 {{ form.non_field_errors }}
 
 {% for field in form %}
@@ -21,14 +21,10 @@
     </div>
 {% endfor %}
 
-<input type="submit" class="k-button" value="Save" />
-<input type="submit" class="k-button" name="cancel" value="Cancel" />
+<div class="ym-fbox-button">
+<input type="submit" class="ym-button ym-save" value="Save" />
+<input type="submit" class="ym-button ym-cancel" name="cancel" value="Cancel" />
+</div>
 </form>
 
-<script type="text/javascript">
-    $(function() {
-         $("#id_filename").kendoUpload({
-             async: {saveUrl: "#", removeUrl: "#", autoUpload: false}
-    });
-    });
 {% endblock %}
