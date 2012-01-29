@@ -3,7 +3,7 @@ import tagging
 
 class Document(models.Model):
     title = models.CharField(max_length=500)
-    filename = models.CharField(max_length=500)
+    filename = models.FileField(upload_to='uploads')
     description = models.TextField()
 
     def __unicode__(self):
