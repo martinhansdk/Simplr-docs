@@ -55,6 +55,7 @@ MEDIA_ROOT = join(ROOT, 'static')
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/static/'
+STATIC_URL = MEDIA_URL
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -95,9 +96,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'documents',
-    'tagging',
-    # Uncomment the next line to enable the admin:
-    #'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'taggit',
+    'taggit_templatetags',
+    'taggit_autocomplete_modified',
 )

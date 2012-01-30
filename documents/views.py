@@ -49,6 +49,14 @@ def detail(request, document_id):
 def add(request):
     return detail(request, document_id=None)
 
+
+def tag(request, tag):
+
+    docs=Document.objects.filter(tags__slug__in=[ tag ])
+
+    return render_to_response('documents/tag.html', dict(tag=tag,
+                                                         docs=docs))
+
 ##### File handling #####
 
 def handle_uploaded_file(f, name):
