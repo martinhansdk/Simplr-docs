@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Docunizer - {{ tag }}{% endblock %}
+
+{% block content %}
+<a href="/">Back to document list</a>
+
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Type</th>
+<th>Tags</th>
+</tr>
+</thead>
+<tbody>
+{% for doc in docs %}
+<tr>
+<td><a href="/{{doc.id}}">{{ doc.title }}</td>
+<td>PDF</td>
+<td>{% for tag in doc.tags.all %}<span class="tag">{{ tag }}</span> {% endfor %}</td>
+</tr>
+{% endfor %}
+</form>
+
+{% endblock %}
